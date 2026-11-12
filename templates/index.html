@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071522">
+  <meta name="description" content="Explore human anatomy, organ functions and body systems with Body Atlas.">
+  <title>BODY ATLAS | Human Biology Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#"><span class="brand-mark">✳</span><span>BODY<span class="brand-light">ATLAS</span><small>HUMAN BIOLOGY EXPLORER</small></span></a>
+    <div class="side-label">WORKSPACE</div>
+    <button class="nav-link active" data-view="overview"><span>▦</span> Overview</button>
+    <button class="nav-link" data-view="organs"><span>◉</span> Organ explorer</button>
+    <button class="nav-link" data-view="systems"><span>⌘</span> Body systems</button>
+    <button class="nav-link" data-view="quiz"><span>✎</span> Knowledge quiz</button>
+    <div class="sidebar-bottom"><div class="pulse-dot"></div><span>LEARNING MODE</span><p>Explore. Understand. Remember.</p></div>
+  </aside>
+  <main class="main-area">
+    <header class="topbar"><div class="crumb">SCIENCE / <b id="crumb-current">OVERVIEW</b></div><div class="top-right"><span class="live-dot"></span> INTERACTIVE ATLAS <span class="avatar">BA</span></div></header>
+    <section class="page-heading"><div><div class="eyebrow">THE HUMAN BODY, EXPLAINED</div><h1 id="page-title">Explore the <em>human body.</em></h1><p id="page-subtitle">A guided journey through the organs and systems that keep you alive.</p></div><div class="heading-stamp">BIOLOGY<br><b>01 — 08</b></div></section>
+    <section id="overview-view" class="view active">
+      <div class="hero-grid">
+        <article class="hero-card"><div class="hero-copy"><span class="tag">YOUR BODY, IN FOCUS</span><h2>Every part has<br>a <em>purpose.</em></h2><p>Discover how your organs work together as one extraordinary living system.</p><button class="primary-btn" id="explore-btn">Explore organs <span>↗</span></button></div>
+          <div class="body-art" aria-label="Stylized human body illustration"><div class="body-head"></div><div class="body-neck"></div><div class="body-torso"><i class="organ-dot brain-dot">✳</i><i class="organ-dot heart-dot">♥</i><i class="organ-dot lung-dot">◖</i><i class="organ-dot liver-dot">◆</i></div><div class="body-arm left"></div><div class="body-arm right"></div><div class="body-leg left"></div><div class="body-leg right"></div><span class="art-label label-brain">BRAIN</span><span class="art-label label-heart">HEART</span><span class="art-label label-lungs">LUNGS</span></div>
+          <div class="hero-foot"><span>ANATOMY OVERVIEW</span><span>FIG. 001&nbsp; ↗</span></div>
+        </article>
+        <article class="quote-card"><div class="quote-icon">“</div><p>The human body is a beautifully connected system — each organ has a role, and every role matters.</p><div class="quote-line"></div><span>THE SCIENCE OF YOU</span><div class="quote-watermark">✳</div></article>
+      </div>
+      <div class="section-row"><div><div class="eyebrow">START DISCOVERING</div><h2>Inside the human body</h2></div><button class="text-btn" id="all-organs-btn">View all organs ↗</button></div>
+      <div class="stats-grid"><div class="stat-card"><span class="stat-icon">◉</span><strong>08</strong><span>FEATURED ORGANS</span><small>Explore key structures</small></div><div class="stat-card"><span class="stat-icon">⌘</span><strong>05</strong><span>BODY SYSTEMS</span><small>Understand connections</small></div><div class="stat-card"><span class="stat-icon">✎</span><strong>08</strong><span>QUIZ QUESTIONS</span><small>Test what you learn</small></div></div>
+      <div class="section-row"><div><div class="eyebrow">QUICK ACCESS</div><h2>Explore an organ</h2></div></div><div class="organ-grid" id="featured-organs"></div>
+    </section>
+    <section id="organs-view" class="view">
+      <div class="toolbar"><label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Search organs, functions or locations..."></label><select id="system-filter"><option>All</option></select></div>
+      <div class="result-line"><span id="result-count">8 organs</span><span>SELECT AN ORGAN TO LEARN MORE</span></div>
+      <div class="explorer-layout"><div class="organ-grid explorer-grid" id="organ-list"></div><aside class="detail-panel" id="organ-detail"><div class="detail-empty"><span>◉</span><h3>Select an organ</h3><p>Choose an organ card to explore its location, function and key facts.</p></div></aside></div>
+    </section>
+    <section id="systems-view" class="view"><div class="system-intro"><div class="eyebrow">CONNECTED BY DESIGN</div><h2>Body systems work <em>together.</em></h2><p>Each system has a specialised job, but none works alone.</p></div><div class="systems-grid" id="systems-list"></div></section>
+    <section id="quiz-view" class="view"><div class="quiz-wrap"><div class="eyebrow">CHECK YOUR UNDERSTANDING</div><h2>Knowledge <em>check.</em></h2><p class="muted">A quick quiz to help you remember what you've discovered.</p><div class="quiz-card" id="quiz-card"><div class="quiz-top"><span id="quiz-progress">QUESTION 01 / 08</span><span id="quiz-score">SCORE 0</span></div><div class="progress-track"><div id="progress-fill"></div></div><div class="quiz-organ" id="quiz-organ">🧠 BRAIN</div><h3 id="quiz-question">Loading question...</h3><div id="quiz-options" class="quiz-options"></div><div id="quiz-feedback" class="quiz-feedback"></div><button id="next-question" class="primary-btn" disabled>Next question <span>→</span></button></div></div></section>
+    <footer><span>BODY ATLAS <b>·</b> A HUMAN BIOLOGY LEARNING PROJECT</span><span>BUILT FOR CURIOUS MINDS <b>✳</b></span></footer>
+  </main>
+</div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body></html>
